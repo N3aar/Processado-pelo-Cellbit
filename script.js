@@ -19,7 +19,7 @@ const onSubmit = event => {
   const account = document.querySelector('.account');
   const back = document.querySelector('.back');
 
-  account.innerText = '@' + twitter.value;
+  account.innerText = '@' + twitter.value.replace('@', '');
 
   if (hasProsecuted(twitter.value)) {
     document.body.classList.add('prosecuted');
