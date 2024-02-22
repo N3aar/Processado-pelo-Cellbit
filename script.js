@@ -19,11 +19,12 @@ const onSubmit = event => {
   const account = document.querySelector('.account');
   const back = document.querySelector('.back');
 
-  account.innerText = '@' + twitter.value.replace('@', '');
+  const nickname = twitter.value.replace('@', '');
+  account.innerText = '@' + nickname;
 
-  if (hasProsecuted(twitter.value.replace('@', ''))) {
+  if (hasProsecuted(nickname)) {
     document.body.classList.add('prosecuted');
-    document.querySelector('.audio-yes').play();
+    document.querySelector(nickname === 'Ricardonns_' ? '.audio-easteregg' : '.audio-yes').play();
     result.innerText = 'SIM! 👍';
   } else {
     document.body.classList.add('not-prosecuted');
@@ -43,7 +44,7 @@ const reset = () => {
   const account = document.querySelector('.account');
   const back = document.querySelector('.back');
 
-  twitter.value = "";
+  twitter.value = '';
   twitter.classList.remove('hidden');
   result.classList.add('hidden');
   account.classList.add('invisible');
@@ -54,10 +55,10 @@ const reset = () => {
 }
 
 const onLoad = async event => {
-  document.body.addEventListener("click", focusInput);
-  document.querySelector('#twitter').addEventListener("keypress", onSubmit);
-  document.querySelector('.back').addEventListener("click", reset);
+  document.body.addEventListener('click', focusInput);
+  document.querySelector('#twitter').addEventListener('keypress', onSubmit);
+  document.querySelector('.back').addEventListener('click', reset);
   accounts = await loadJSON('assets/accounts');
 }
 
-document.addEventListener("DOMContentLoaded", onLoad);
+document.addEventListener('DOMContentLoaded', onLoad);
