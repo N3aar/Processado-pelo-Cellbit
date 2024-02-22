@@ -21,7 +21,7 @@ const onSubmit = event => {
 
   account.innerText = '@' + twitter.value.replace('@', '');
 
-  if (hasProsecuted(twitter.value)) {
+  if (hasProsecuted(twitter.value.replace('@', ''))) {
     document.body.classList.add('prosecuted');
     document.querySelector('.audio-yes').play();
     result.innerText = 'SIM! 👍';
